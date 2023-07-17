@@ -1,0 +1,29 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+        
+      - name: Restore
+        run: dotnet restore ./Docker_App.sln
+      
+      - name: Build 
+        run: dotnet build ./Docker_App.sln --configuration Published --no-restore
+         
+      - name: Publish
+        run: dotnet build ./Docker_App.sln --configuration Published --no-build
