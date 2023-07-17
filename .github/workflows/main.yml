@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '6.0.x'
         
       - name: Restore
-        run: dotnet restore ./DotNet.Docker.sln
+        run: dotnet restore ./DotNet_Docker.sln
       
       - name: Build 
-        run: dotnet build ./DotNet.Docker.sln --configuration Published --no-restore
+        run: dotnet build ./DotNet_Docker.sln --configuration Published --no-restore
          
       - name: Publish
-        run: dotnet build ./DotNet.Docker.sln --configuration Published --no-build
+        run: dotnet build ./DotNet_Docker.sln --configuration Published --no-build
